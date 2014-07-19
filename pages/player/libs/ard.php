@@ -20,38 +20,6 @@ class ARD implements ILibrary {
         return strpos($url, $probe) === 0;
 	}
 	
-	function _search($query) {
-		$o = array();
-        $options  = array(
-            "http" => array(
-                "user_agent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36"
-            )
-        );
-        
-        $context  = stream_context_create($options);
-        
-		$c = file_get_contents("http://www.ardmediathek.de/tv/suche?searchText=" . urlencode($query), false, $context);
-		$pq = phpQuery::newDocumentHTML($c);
-        $results = $pq[".boxCon .box .teaser"];
-        $skip = 2;
-        
-        foreach ($results as $m) {
-            if ($skip > 0) {
-                $skip--;
-                continue;
-            }
-            $k = pq($m);
-            $l = $k->find(".textWrapper");
-            $url = "http://www.ardmediathek.de" . $l->find("a")->attr("href");
-            
-            $i = $k->find(".mediaCon .media a img")->attr("data-ctrl-image");
-            $i = array_pop(explode("'urlScheme':'", $i));
-            $i = array_shift(explode("#", $i));
-            $i .= "384";
-            $o[$url] = array($l->find(".headline")->text(), $l->find(".subtitle")->text(), '<img class="fullwidth" src="http://www.ardmediathek.de' . $i . '"/>');
-        }
-		return $o;
-	}
     
     function getVideos($query, $page="") {
 		$o = array();
