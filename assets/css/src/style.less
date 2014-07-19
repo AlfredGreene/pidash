@@ -1,0 +1,78 @@
+//out: ../style.css, compress: true
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600);
+@import "_vars.less";
+
+body {
+    margin: 50px 0px 0px 0px;
+    font-family: @font;
+    font-weight: 300;
+    color: @dark;
+    background-color: #f7f7f7;
+}
+
+.selection() {
+    background-color: @accent;
+    color: #fff;
+}
+::selection {
+    .selection();
+}
+::-moz-selection {
+    .selection();
+}
+
+a {
+    color: #444;
+    text-decoration: none;
+}
+a:hover {
+    color: @accent;
+}
+
+b {
+    font-weight: 600;
+}
+
+img {
+    outline: none;
+    border: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@import "_helper.less";
+@import "_navbar.less";
+@import "_grid.less";
+@import "_components.less";
+@import "_forms.less";
+
+.container {
+    max-width: 1200px;
+    padding: 10px;
+    margin: auto;
+
+    .block {
+        vertical-align: top;
+        margin: 10px 0px;
+        display: inline-block;
+        width: 100%;
+        
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 3px;
+        border: 1px solid #dedede;
+        border-bottom-color: #ccc;
+        
+        h2, h3 {
+            font-weight: normal;
+            margin-top: 0px;
+        }
+    }
+}
+
+.content {
+    padding-top: 10px;
+}

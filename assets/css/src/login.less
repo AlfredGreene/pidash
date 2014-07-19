@@ -1,0 +1,38 @@
+//out: ../login.css, compress: true
+@import "_vars.less";
+
+body {
+    background-color: @accent;
+    padding: 0px;
+}
+
+.container {
+    text-align: center;
+    top: 40vh;
+    
+    .circle {
+        width: 25vw;
+        height: 25vw;
+        min-width: 200px;
+        min-height: 200px;
+        margin: 0px auto 50px auto;
+        border: 15px solid @navbar-highlight;
+        border-radius: 1000px;
+    
+        .logo {
+            color: #4d4d4d;
+            font-size: 20vw;
+            top: 40%;
+        }
+    }
+}
+
+input[type="password"] {
+    margin-top: 30px;
+}
+
+@media (max-width: 800px) {
+    .logo {
+        font-size: 120pt !important;
+    }
+}

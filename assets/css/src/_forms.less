@@ -1,0 +1,40 @@
+input[type="text"], input[type="password"] {
+    font-family: @font;
+    font-size: 12pt;
+    color: @dark;
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: 1px solid #dedede;
+    border-top-color: #ccc;
+    
+    transition-property: border;
+    transition-duration: 0.2s;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: lighten(@accent, 20%);
+    border-top-color: lighten(@accent, 10%);
+    outline: none;
+}
+
+label {
+    line-height: 280%;
+}
+
+select {
+    padding: 10px 0px 10px 10px;
+    border-radius: 3px;
+    background-color: #fff;
+    -webkit-appearance: none;
+    outline: none;
+    border: 1px solid #dedede;
+    border-top-color: #ccc;
+    
+    color: @dark;
+    
+    transition-property: border;
+    transition-duration: 0.2s;
+}
+select:focus {
+    border-color: lighten(@accent, 20%);
+    border-top-color: lighten(@accent, 10%);
+}
