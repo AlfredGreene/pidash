@@ -71,19 +71,23 @@ echo '
                         <h2>Device Management</h2>
                         <br>
 <?php
-$d = $s->DiskSpace();
-$fs = $d["used"];
-echo '
+$disks = $s->DiskSpace();
+echo ' <div class="row">
+                            <div class="col-50">';
+							foreach ($disks as $disk) {
+							?>
 
-                        <div class="row">
-                            <div class="col-50">
                                 <div class="diagram">
-                                    <b class="accent">Filesystem</b>
-                                    <img src="assets/php/modules/diagram.php?p=' . ($fs / 100.) . '">
+                                    <b class="accent">Filesystem <?php echo $disk["label"];?></b>
+                                    <img src="assets/php/modules/diagram.php?p=<?php echo $disk["used"]/100;?>">
                                     <div class="data">
-                                        ' . $fs . '%
+                                        <?php echo $disk["used"];?>%
                                     </div>
                                 </div>
+							<?php 
+								}
+							
+echo '
                             </div>
                             <div class="col-50">
                                 <b class="accent">Temperature: </b>' . $s->Temperature() . '&deg;C
@@ -94,12 +98,11 @@ echo '
                                 <br>
                                 <a class="btn fullwidth" href="?reboot">Reboot</a>
                             </div>
-                        </div>';
-?>
+                        </div>
 
                     </div>
                 </div>
-            </div>
+            </div>'; ?>
             <div class="row">
                 <div class="col-50">
                     <div class="block">

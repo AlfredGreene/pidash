@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo echo -n
+#sudo echo -n
 
 echo "                         ____  _ ____            _     "
 echo "                        |  _ \(_)  _ \  __ _ ___| |__  "
@@ -23,9 +23,9 @@ echo
 CWD=`pwd`
 
 echo "First of all, I'm going to install stuff like unzip, screen, omxplayer, wget, raspi2png and youtube-dl..."
-sudo apt-get -y install unzip screen omxplayer wget youtube-dl git libpng12-dev make python-pexpect ffmpeg openvpn > /dev/null
+#sudo apt-get -y install unzip screen omxplayer wget youtube-dl git libpng12-dev make python-pexpect ffmpeg openvpn > /dev/null
 echo "Install done, updating youtube-dl..."
-sudo youtube-dl -U > /dev/null
+		#sudo youtube-dl -U > /dev/null
 
 echo "Installing raspi2png..."
 cd /tmp
