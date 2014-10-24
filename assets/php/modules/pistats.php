@@ -120,7 +120,7 @@ class Stats {
         return $o;
     }
 	function get_disks(){
-	        $data=`mount | mount | grep -E "sd|/ "`;
+	        $data=`mount | grep -E "sd|/ "`;
 	        $disks_line=preg_split("/\\r\\n|\\r|\\n/",$data);
 			$disks=Array();
 	        foreach($disks_line as $line) {
