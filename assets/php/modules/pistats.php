@@ -34,11 +34,15 @@ class Stats {
     }
 	
 	function DiskSpace() {
-		$total = disk_total_space("/");
-		$free = disk_free_space("/");
-		$f = round($free / (float)($total), 2) * 100;
-		$u = 100 - $f;
-		return array("total"=>round($total/1024/1024/1024, 2), "free"=>$f, "used"=>$u);
+		$result= Array();
+		foreach (Stats::get_disks() as $disk) { 	
+			$total = disk_total_space($disk);
+			$free = disk_free_space($disk);
+			$f = round($free / (float)($total), 2) * 100;
+			$u = 100 - $f;
+			$result[]=array("label"=>$disk,"total"=>round($total/1024/1024/1024, 2), "free"=>$f, "used"=>$u);
+		}
+		return $result;
 	}
 	
 	function RAM() {
@@ -115,6 +119,17 @@ class Stats {
         }
         return $o;
     }
+	function get_disks(){
+	        $data=`mount | grep -E "sd|/ "`;
+	        $disks_line=preg_split("/\\r\\n|\\r|\\n/",$data);
+			$disks=Array();
+	        foreach($disks_line as $line) {
+				$val=explode(' ',$line);
+				if (sizeof($val) > 1)
+					$disks[]=$val[2];
+			}
+	        return $disks;
+	}
 }
 
 ?>
